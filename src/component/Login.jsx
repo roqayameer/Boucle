@@ -54,8 +54,8 @@ export default function Login() {
           />
         </div>
 
-        <div style={{ display: "flex", "font-size": "small" }}>
-          <label style={{ "margin-right": "97px" }}>
+        <div style={{ display: "flex", "font-size": "small","justify-content": "space-around","margin-top": "17px"}}>
+          <label >
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />{" "}
             Remember me
           </label>

@@ -139,7 +139,9 @@ div > div.details {
   flex-wrap: wrap;
   padding: 50px;
   max-width: 100%;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: row;
+  height: auto;
 }
 
 .details .img-container {
@@ -165,6 +167,7 @@ div > div.details {
   display: flex;
   justify-content: flex-start;
   height: auto;
+  flex-direction: column;
 }
 .box-details h2 {
   text-transform: uppercase;
@@ -519,7 +522,7 @@ div.card2_text1 {
 }
 span.psw {
   font-size: 13px;
-  padding-top: 5px;
+  /* padding-top: 5px; */
 }
 .cancelbtn {
   width: auto;
@@ -532,12 +535,17 @@ span.psw {
   border-radius: 4px;
   margin-right: 100px;
 }
+
+/* --------------------------details--------------------- */
+.details{
+  
+}
 @media only screen and (min-width: 0px) and (max-width: 575.98px) {
   #login {
     display: inherit;
     width: 241px;
     margin-top: 30px;
-    margin-left: 29%;
+    margin-left: 18%;
   }
 }
 @media only screen and (min-width: 575.98px) and (max-width: 767.98px) {

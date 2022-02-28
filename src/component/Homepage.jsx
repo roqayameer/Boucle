@@ -64,7 +64,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
 
-            <button>Add to cart</button>
+            <button> <Link to="/Prodect"> Shop </Link></button>
           </div>
         </div>
         <div className="card">
@@ -88,7 +88,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
 
-            <button>Add to cart</button>
+            <button> <Link to="/Prodect"> Shop </Link></button>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
             
-            <button>Add to cart</button>
+            <button> <Link to="/Prodect"> Shop </Link></button>
           </div>
         </div>
       </div>

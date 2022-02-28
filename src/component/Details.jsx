@@ -5,7 +5,6 @@ import Colors from "./Colors";
 import DetailsThumt from "./DetailsThumt";
 import { Link } from "react-router-dom";
 
-
 export default function Details() {
   const { id } = useParams();
   const value = useContext(DataContext);
@@ -27,7 +26,7 @@ export default function Details() {
   console.log(details);
 
   return (
-    <div>
+    <div >
       {details.map((product) => (
         <div className="details" key={product._id}>
           <div
@@ -42,27 +41,27 @@ export default function Details() {
           <div className="box-details">
             <h2 title={product.title}>{product.title}</h2>
             <h3>${product.price}</h3>
-            <Colors colors={product.colors} />
-            <div className="colors">
+            {/* <Colors colors={product.colors} /> */}
+            {/* <div className="colors">
               {product.colors.map((color, index) => (
                 <button key={index} style={{ background: color }}>
                   {color}
                 </button>
               ))}
-            </div>
+              </div>*/}
 
-            <div className="sizes">
+            {/*<div className="sizes">
               {product.sizes.map((size, index) => (
                 <button key={index}>{size}</button>
               ))}
-            </div>
+              </div>*/}
 
             <p>{product.description}</p>
-            <p>{product.content}</p>
-            <DetailsThumt images={product.images} setIndex={setIndex} />
+            {/* <p>{product.content}</p> */}
+            {/*  <DetailsThumt images={product.images} setIndex={setIndex} />
             <Link to="/cart" className="cart" onClick={() => addCart(products._id)}>
               Add to cart
-            </Link>
+              </Link>*/}
           </div>
         </div>
       ))}

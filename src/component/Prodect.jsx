@@ -10,6 +10,8 @@ export default function Prodect() {
   // console.log(products);
   // console.log(useContext(DataContext).products)
   return (
+    <>
+    <div><input type="text" /></div>
     <div className="products">
       {products.map((products) => (
         <div className-="card" key={products._id}>
@@ -37,5 +39,6 @@ export default function Prodect() {
         </div>
       ))}
     </div>
+    </>
   );
 }
