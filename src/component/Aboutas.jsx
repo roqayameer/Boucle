@@ -20,10 +20,10 @@ export default function Aboutas() {
           </h3>
           <p
             style={{
-              "padding-left": "40px",
-              "padding-right": "40px",
+              "padding-left": "20px",
+              "padding-right": "20px",
               "text-align": "left",
-              "font-size": "medium",
+              "font-size": "revert",
             }}
           >
             Seamlessly sync your online store inventory no matter where you sell

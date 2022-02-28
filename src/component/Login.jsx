@@ -15,10 +15,13 @@ export default function Login() {
         email: email,
         password: password,
       })
-      .than((response) => {
+      .then((response) => {
         console.log(response);
+        let token = response.data.token.access;
+        let data = response.data;
+        localStorage.setItem("token", JSON.stringify(data));
       })
-      .catsh((err) => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -36,7 +39,6 @@ export default function Login() {
             value={email}
             placeholder="Enter Email"
             pattern=".+@globex\.com"
-            name="uname"
             required
             onChange={(e) => SetEmail(e.target.value)}
           />
@@ -47,7 +49,6 @@ export default function Login() {
             type="password"
             value={password}
             placeholder="Enter Password"
-            name="psw"
             required
             onChange={(e) => SetPassword(e.target.value)}
           />

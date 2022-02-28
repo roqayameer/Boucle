@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { useNavigate }  from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineContacts } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
@@ -7,30 +7,35 @@ import { IoIosLogIn } from "react-icons/io";
 import { AiOutlinePhone } from "react-icons/ai";
 import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import axios from "axios";
 export default function Singin() {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [homeaddress, setHomeaddress] = useState("");
-  const [phone,setPhone] = useState("");
-  const history = useNavigate();
-  // const [phone,setPhone] = useState("");
+  const [email, SetEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
-  async  function singin(){
-    let item= {username,password,homeaddress,phone};
-    console.warn(item);
-    let resalt = await fetch("http://localhost:3000/api/Singin",{
-      method: "POST",
-      body:JSON.stringify(item),
-      headers:{"Content-Type":"application/json",
-    "Accept":"application/json",},
+  const singin = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://compute-django.herokuapp.com/api/auth/signup", {
+        username: username,
+        password:password,
+        homeaddress:homeaddress,
+        email:email,
+        phone:phone,
+      })
+      .then((response) => {
+        console.log(response);
+        let token = response.data.token.access;
+        let data = response.data;
+        localStorage.setItem("token", JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    })
-    resalt =await resalt.JSON;
-    // console.warn("resalt",resalt)
-    localStorage.setItem("user-info", JSON. stringify(resalt))
-    history('/add');
-  }
   return (
     <div>
       <div id="login">
@@ -39,23 +44,23 @@ export default function Singin() {
         <div className="textbox">
           <AiOutlineUser />
           <input
-          value={username}
+            value={username}
             type="text"
             placeholder="Enter Username"
             name="uname"
             required
-            onChange={(e)=>setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="textbox">
           <RiLockPasswordLine />
           <input
-          value={password}
+            value={password}
             type="password"
             placeholder="Enter Password"
             name="psw"
             required
-            onChange={(e)=> setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="textbox">
@@ -68,34 +73,52 @@ export default function Singin() {
           />
         </div>
         <div className="textbox">
+          <AiOutlineUser />
+          <input
+            type="email"
+            value={email}
+            placeholder="Enter Email"
+            pattern=".+@globex\.com"
+            required
+            onChange={(e) => SetEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="textbox">
           <AiOutlinePhone />
           <input
-           value={phone}
+            value={phone}
             id="phone"
             type="tel"
             name="phone"
             placeholder="ُEnter PhoneNumber"
             required
-            onChange={(e)=> setPhone(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </div>
         <div className="textbox">
           <AiOutlineHome />
           <input
-          value={homeaddress}
+            value={homeaddress}
             type="text"
             placeholder="Enter Home address"
             name="Home address"
             required
-            onChange={(e)=>setHomeaddress(e.target.value)}
+            onChange={(e) => setHomeaddress(e.target.value)}
           />
         </div>
-        <label style={{ "margin-right": "100px", "font-size": "small" }}>
+        <label style={{ "font-size": "small" }}>
           <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" /> I
           agree with Terms and Privacey
         </label>
         <Link to="/Login">
-        <input onClick={singin} className="btn" type="button" name="" value="Create account" />
+          <input
+            onClick={singin}
+            className="btn"
+            type="button"
+            name=""
+            value="Create account"
+          />
         </Link>
         <div className="container">
           <span className="psw">
