@@ -69,9 +69,6 @@ export default function Cart() {
 
   return (
     <>
-    <div  onClick={toggleMeenu}>
-        <input type="text" />
-      </div>
       {cart.map((products) => (
         <div className="details cart" key={products._id}>
           <div

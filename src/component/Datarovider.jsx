@@ -16,8 +16,6 @@ export const Datarovider = (props) => {
         "Similar to natural oils, artificial hair oils can decrease scalp dryness by forming hydrophobic films that decrease transepidermal water loss reducing evaporation from water from the skin.",
       content:
         "Welcome to our channel Dev AT. Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.",
-      colors: ["red", "black", "teal"],
-      sizes: ["XL", "L", "M", "XM", "LX"],
       price: 101,
       count: 1,
     },
