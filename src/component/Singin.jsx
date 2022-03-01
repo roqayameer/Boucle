@@ -17,22 +17,61 @@ export default function Singin() {
 
   const singin = (e) => {
     e.preventDefault();
-    axios
-      .post("https://compute-django.herokuapp.com/api/auth/signup", {
-        username: username,
-        password:password,
-        homeaddress:homeaddress,
-        email:email,
-        phone:phone,
+    // axios
+    //   .post(
+    //     "https://compute-django.herokuapp.com/api/auth/signup",
+    //     {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     JSON.stringify({
+    //       username: username,
+    //       password: password,
+    //       homeaddress: homeaddress,
+    //       email: email,
+    //       phone: phone,
+    //     })
+    //   )
+    //   .then((response) => {
+    //     console.log(response);
+    //     // let token = response.data.token.access;
+    //     // let data = response.data;
+    //     // localStorage.setItem("token", JSON.stringify(data));
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
+    var data = JSON.stringify({
+      username:username,
+      address1:homeaddress,
+      password1: password,
+      password2: password,
+      phone_number: phone,
+      email: email,
+    });
+
+    console.log("hey data!", data)
+
+    var config = {
+      method: "post",
+      url: "https://compute-django.herokuapp.com/api/auth/signup",
+      headers: {
+        Accept: "application/json",
+        // "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      withCredentials: false,
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
       })
-      .then((response) => {
-        console.log(response);
-        let token = response.data.token.access;
-        let data = response.data;
-        localStorage.setItem("token", JSON.stringify(data));
-      })
-      .catch((err) => {
-        console.log(err);
+      .catch(function (error) {
+        console.log(error.response);
       });
   };
 

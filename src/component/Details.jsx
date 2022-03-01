@@ -57,11 +57,12 @@ export default function Details() {
               </div>*/}
 
             <p>{product.description}</p>
-            {/* <p>{product.content}</p> */}
-            {/*  <DetailsThumt images={product.images} setIndex={setIndex} />
-            <Link to="/cart" className="cart" onClick={() => addCart(products._id)}>
+             {/* <p>{product.content}</p>  */}
+              {/* <DetailsThumt images={product.images} setIndex={setIndex} /> */} 
+            {/* <Link to="/cart" className="cart" onClick={() => addCart(products._id)}> *
               Add to cart
-              </Link>*/}
+            </Link> */}
+              <button onClick={() => addCart(product._id)}>Add to cart</button>
           </div>
         </div>
       ))}

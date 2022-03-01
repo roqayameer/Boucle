@@ -104,6 +104,7 @@ div > .box p {
   margin: 10px 0;
   line-height: 1.5;
   font-size: smaller;
+  min-height: 110px;
 }
 div > .box h4 {
   color: #e27421;
@@ -126,38 +127,30 @@ div > .box button {
 
 /* ------------------------------ Details------------------------------ */
 div > div.details {
-  /*width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 50px;
-  max-width: 100%;*/
-
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 50px;
   max-width: 100%;
-  /* flex-direction: column; */
   flex-direction: row;
   height: auto;
+  margin-left: 12%;
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .details .img-container {
-  max-width: 233px;
-  margin: 20px;
+  max-width: 186px;
+  /* margin: 20px; */
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 216px;
+  height: 186px;
   box-shadow: none;
 }
 
 .details .img-container:hover {
-  /* background-size: 150%; */
   border: 1px solid #ddd;
-  /* cursor: zoom-in; */
 }
 .box-details {
   max-width: 500px;

@@ -8,9 +8,8 @@ export default function Login() {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
 
-  const login = (e) => {
-    e.preventDefault();
-    axios
+  {
+    /*axios
       .post("https://compute-django.herokuapp.com/api/auth/signin", {
         email: email,
         password: password,
@@ -23,6 +22,37 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err);
+      });*/
+  }
+  const login = (e) => {
+    e.preventDefault();
+    var data = JSON.stringify({
+      email: email,
+      password: password,
+    });
+
+    console.log("hey data!", data);
+
+    var config = {
+      method: "post",
+      url: "https://compute-django.herokuapp.com/api/auth/signin",
+      headers: {
+        Accept: "application/json",
+        // "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      withCredentials: false,
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error.response);
       });
   };
 
@@ -54,8 +84,15 @@ export default function Login() {
           />
         </div>
 
-        <div style={{ display: "flex", "font-size": "small","justify-content": "space-around","margin-top": "17px"}}>
-          <label >
+        <div
+          style={{
+            display: "flex",
+            "font-size": "small",
+            "justify-content": "space-around",
+            "margin-top": "17px",
+          }}
+        >
+          <label>
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />{" "}
             Remember me
           </label>
