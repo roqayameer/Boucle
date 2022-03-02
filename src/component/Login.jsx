@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useNavigate, navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 export default function Login() {
   const [email, SetEmail] = useState("");
@@ -25,6 +26,8 @@ export default function Login() {
       });*/
   }
   const login = (e) => {
+    //const navigate = useNavigate()
+
     e.preventDefault();
     var data = JSON.stringify({
       email: email,
@@ -38,21 +41,29 @@ export default function Login() {
       url: "https://compute-django.herokuapp.com/api/auth/signin",
       headers: {
         Accept: "application/json",
-        // "Content-Type": "application/json",
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       },
       withCredentials: false,
-      data: data,
+      data: {
+        email: email,
+        password: password,
+      },
     };
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log("Hi", JSON.stringify(response.data));
+        // return <Link to="/Prodect"></Link>
+        // return <Navigate to="/Prodect" />
+
+        let token = response.data.token.access;
+        localStorage.setItem("token", JSON.stringify(token));
+        window.location.href = "/Prodect";
+
+        // navigate("Prodect")
       })
       .catch(function (error) {
-        console.log(error.response);
+        console.log("error", (error.response || {}).data);
       });
   };
 

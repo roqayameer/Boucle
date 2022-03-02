@@ -80,7 +80,7 @@ section > div > div {
   max-width: 260px;
   width: 100%;
   overflow: hidden;
-  height: 450px;
+  /* height: 450px; */
   box-shadow: 0 0 5px #ccc;
   padding: 15px;
   margin: 15px 0;
@@ -92,6 +92,7 @@ section > div > div {
 
 div > .box {
   margin: 15px 0;
+  height: 217px;
 }
 div > .box h3 {
   text-transform: uppercase;

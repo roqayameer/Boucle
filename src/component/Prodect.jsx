@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "./Datarovider";
 import pexels from "./pexels.jpg";
 import { Link } from "react-router-dom";
@@ -6,12 +6,16 @@ import { BiSearchAlt } from "react-icons/bi";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
+import { Navigate } from "react-router-dom";
 export default function Prodect() {
   const value = useContext(DataContext);
   const [products] = value.products;
+  const [products_image] = value.products_image;
   const addCart = value.addCart;
   const [filters, setFilter] = React.useState(products);
   const [search_value, setSearch] = React.useState("");
+
+  console.log("imgg", value);
 
   function onSearchChange(e) {
     let newValue = e.target.value;
@@ -29,6 +33,15 @@ export default function Prodect() {
 
   // console.log(products);
   // console.log(useContext(DataContext).products)
+
+  const [isLogin, setisLogin] = useState(null);
+  useEffect(() => {
+    let loggedstate = JSON.parse(localStorage.getItem("token"));
+    console.log("is Logged", loggedstate);
+    setisLogin(loggedstate);
+  }, []);
+
+  // if (!isLogin) return <Navigate to="/Login" />;
   return (
     <>
       <Box
@@ -49,15 +62,16 @@ export default function Prodect() {
         />
       </Box>
       <div className="products">
-        {filters.map((products) => (
-          <div className-="card" key={products._id}>
-            <Link to={`/products/${products._id}`}>
+        {products.map((product, key) => (
+          <div className-="card" key={key}>
+            <Link to={`/products/${product.id}`}>
               <img
-                src={products.images[0]}
+                src={products_image[`img${key + 1}`]}
                 style={{
+                  marginTop: "10%",
                   width: "100%",
-                  display: " block",
-                  "object-fit": "cover",
+                  display: "block",
+                  objectFit: "cover",
                 }}
               />
             </Link>
@@ -65,14 +79,14 @@ export default function Prodect() {
               <div
                 style={{ display: "flex", "justify-content": "space-around" }}
               >
-                <h3 title={products.titel}>
-                  <Link to={`/products/${products._id}`}>{products.title}</Link>
+                <h3 title={product.name}>
+                  <Link to={`/products/${product.id}`}>{product.name}</Link>
                 </h3>
-                <h4>${products.price}</h4>
+                <h4>${product.price}</h4>
               </div>
-              <p>{products.description}</p>
+              <p>{product.description}</p>
 
-              <button onClick={() => addCart(products._id)}>Add to cart</button>
+              <button onClick={() => addCart(product.id)}>Add to cart</button>
             </div>
           </div>
         ))}

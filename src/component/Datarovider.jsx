@@ -1,9 +1,78 @@
 import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 export const DataContext = createContext();
 
 export const Datarovider = (props) => {
-  const [products, setProducts] = useState([
-    {
+  const [products_image, setproducts_image] = useState({
+    img1: "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg",
+    img2: "https://th.bing.com/th/id/R.79929bb61233a3193e839a66ccb04c8e?rik=ZvJSZHbJUhd4Ug&pid=ImgRaw&r=0",
+    img3: "https://th.bing.com/th/id/OIP._k-4kjE3KDQSs_IqtFsMNgHaHa?pid=ImgDet&rs=1",
+    img4: "https://th.bing.com/th/id/R.147ccde7f1c9dd5efec211da470c32f8?rik=6lTxjSq5VTKYuQ&pid=ImgRaw&r=0",
+    img5: "https://i.pinimg.com/originals/f4/da/34/f4da343f6c4f02eeae3afd82c6e66a1e.jpg",
+  });
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
+    if (dataCart) setCart(dataCart);
+    var config = {
+      method: "Get",
+      url: "https://compute-django.herokuapp.com/api/products",
+      // url:'https://fakestoreapi.com/products',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      withCredentials: false,
+      // data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        let products = [];
+        // console.log(JSON.stringify(response.data));
+        products = response.data;
+        setProducts(products);
+        console.log("iam pppppp", products);
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  }, []);
+
+  const addCart = (id) => {
+    const check = cart.every((item) => {
+      return item._id !== id;
+    });
+    if (check) {
+      const data = products.filter((product) => {
+        return product._id === id;
+      });
+      setCart([...cart, ...data]);
+    } else {
+      alert("the prodect has been added to cart");
+    }
+  };
+
+  /* useEffect(() => {
+    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
+    if (dataCart) setCart(dataCart);
+  }, []);*/
+
+  useEffect(() => {
+    localStorage.setItem("dataCart", JSON.stringify(cart));
+  }, [cart]);
+
+  const value = {
+    products: [products, setProducts],
+    cart: [cart, setCart],
+    products_image: [products_image, setproducts_image],
+    addCart: addCart,
+  };
+  return (
+    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
+  );
+};
+/* {
       _id: "1",
       title: "Wacth Product 01",
       images: [
@@ -74,40 +143,4 @@ export const Datarovider = (props) => {
         "How to and tutorial videos of cool CSS effect, Web Design ideas,JavaScript libraries, Node.",
       price: 106,
       count: 1,
-    },
-  ]);
-
-  const [cart, setCart] = useState([]);
-
-  const addCart = (id) => {
-    const check = cart.every((item) => {
-      return item._id !== id;
-    });
-    if (check) {
-      const data = products.filter((product) => {
-        return product._id === id;
-      });
-      setCart([...cart, ...data]);
-    } else {
-      alert("the prodect has been added to cart");
-    }
-  };
-
-  useEffect(() => {
-    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
-    if (dataCart) setCart(dataCart);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("dataCart", JSON.stringify(cart));
-  }, [cart]);
-
-  const value = {
-    products: [products, setProducts],
-    cart: [cart, setCart],
-    addCart: addCart,
-  };
-  return (
-    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
-  );
-};
+    },*/
