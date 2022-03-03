@@ -12,9 +12,11 @@ export const Datarovider = (props) => {
   });
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [carts, setCarts] = useState([]);
+
   useEffect(() => {
-    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
-    if (dataCart) setCart(dataCart);
+    // const dataCart = JSON.parse(localStorage.getItem("dataCart"));
+    // if (dataCart) setCart(dataCart);
     var config = {
       method: "Get",
       url: "https://compute-django.herokuapp.com/api/products",
@@ -37,20 +39,72 @@ export const Datarovider = (props) => {
       .catch(function (error) {
         console.log(error.response);
       });
+
+      fetchData()
   }, []);
 
-  const addCart = (id) => {
-    const check = cart.every((item) => {
-      return item._id !== id;
-    });
-    if (check) {
-      const data = products.filter((product) => {
-        return product._id === id;
+  const fetchData = () => {
+    let config2 = {
+      method: "get",
+      url: "https://compute-django.herokuapp.com/api/orders/cart",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${loggedstate}`,
+      },
+    };
+    axios(config2)
+      .then((response) => {
+        console.log(response.data);
+        // let carts = [];
+        let carts = response.data;
+        console.log("cartttttttt1111", carts);
+        setCarts(carts);
+        console.log("cartttttttt", carts);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-      setCart([...cart, ...data]);
-    } else {
-      alert("the prodect has been added to cart");
-    }
+  }
+
+  let loggedstate = JSON.parse(localStorage.getItem("token"));
+  const addCart = (id) => {
+    var config = {
+      method: "post",
+      url: "https://compute-django.herokuapp.com/api/orders/add-to-cart",
+      headers: {
+        Authorization: `Bearer ${loggedstate}`,
+        Accept: "application/json",
+        "Content-Type": "text/plain",
+      },
+      data: {
+        product_id: id,
+        item_qty: 1,
+      },
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log("Hiiiiiiiiiiiii", JSON.stringify(response.data));
+        fetchData();
+        alert("the prodect has been added to cart");
+
+        /*const check = cart.every((item) => {
+          return item.id !== id;
+        });
+        if (check) {
+          const data = products.filter((product) => {
+            return product.id === id;
+          });
+          setCart([...cart, ...data]);
+          console.log("cart", cart);
+          console.log("data", data);
+        } else {
+          alert("the prodect has been added to cart");
+        }*/
+      })
+      .catch((error) => {
+        console.log("error from adding", (error.response || {}).data);
+      });
   };
 
   /* useEffect(() => {
@@ -58,15 +112,17 @@ export const Datarovider = (props) => {
     if (dataCart) setCart(dataCart);
   }, []);*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     localStorage.setItem("dataCart", JSON.stringify(cart));
-  }, [cart]);
+  }, [cart]);*/
 
   const value = {
     products: [products, setProducts],
     cart: [cart, setCart],
+    carts: [carts, setCarts],
     products_image: [products_image, setproducts_image],
     addCart: addCart,
+    fetchData: fetchData
   };
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>

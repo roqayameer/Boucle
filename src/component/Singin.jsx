@@ -54,7 +54,7 @@ export default function Singin() {
 
     var config = {
       method: "post",
-      url: "https://compute-django.herokuapp.com/api/auth/signup",
+      url: "https://compute-django.herokuapp.com/api/api/auth/signup",
       headers: {
         Accept: "application/json",
         // "Content-Type": "application/json",

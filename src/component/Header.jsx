@@ -13,8 +13,8 @@ import Aboutas from "./Aboutas";
 export default function () {
   const [menu, setMenu] = useState(false);
   const value = useContext(DataContext);
-  const [cart] = value.cart;
-
+  // const [cart] = value.cart;
+  const [carts] = value.carts;
   const toggleMeenu = () => {
     setMenu(!menu);
   };
@@ -72,7 +72,7 @@ export default function () {
       </ul>
 
       <div className="cart-icon">
-        <span>{cart.length}</span>
+        <span>{carts.length}</span>
         <Link to="/Cart"  style={{"font-size": "x-large"}}>
           <AiOutlineShoppingCart />
         </Link>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { DataContext } from "./Datarovider";
 import pexels from "./pexels.jpg";
 import { Link } from "react-router-dom";
@@ -66,7 +67,12 @@ export default function Prodect() {
           <div className-="card" key={key}>
             <Link to={`/products/${product.id}`}>
               <img
-                src={products_image[`img${key + 1}`]}
+                // src={products_image[`img${key + 1}`]}
+                src={
+                  product.images.length > 0
+                    ? `https://compute-django.herokuapp.com${product.images[0].image}`
+                    : "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg"
+                }
                 style={{
                   marginTop: "10%",
                   width: "100%",
