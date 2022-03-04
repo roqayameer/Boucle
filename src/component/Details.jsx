@@ -10,7 +10,7 @@ export default function Details() {
   const value = useContext(DataContext);
   const [products] = value.products;
   const addCart = value.addCart;
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
   const imgDiv = useRef();
 
   const details = products.filter((product, index) => {

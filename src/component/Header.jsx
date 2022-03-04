@@ -7,8 +7,8 @@ import { DataContext } from "./Datarovider";
 import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineContacts } from "react-icons/ai";
 import { IoIosLogIn } from "react-icons/io";
-import Prodect from "./Prodect";
-import Aboutas from "./Aboutas";
+// import Prodect from "./Prodect";
+// import Aboutas from "./Aboutas";
 
 export default function () {
   const [menu, setMenu] = useState(false);

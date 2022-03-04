@@ -106,13 +106,12 @@ export default function Cart() {
       {!!carts ? (
         !carts?.length > 0 ? (
           // <p>empty</p>
-          <Cartempty/>
+          <Cartempty />
         ) : (
           carts.map((products) => (
             <div className="details cart" key={products.id}>
               <div className="img-container">
                 <img
-                  // src={products_image[`img${key + 1}`]}
                   src={
                     products.product.images.length > 0
                       ? `https://compute-django.herokuapp.com${products.product.images[0].image}`

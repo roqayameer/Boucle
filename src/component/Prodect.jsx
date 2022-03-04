@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 export default function Prodect() {
   const value = useContext(DataContext);
   const [products] = value.products;
-  const [products_image] = value.products_image;
+  // const [products_image] = value.products_image;
   const addCart = value.addCart;
   const [filters, setFilter] = React.useState(products);
   const [search_value, setSearch] = React.useState("");

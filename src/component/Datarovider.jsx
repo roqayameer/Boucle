@@ -40,7 +40,7 @@ export const Datarovider = (props) => {
       .catch(function (error) {
         console.log(error.response);
       });
-      fetchData()
+      // fetchData()
   }, []);
 
   const fetchData = () => {
