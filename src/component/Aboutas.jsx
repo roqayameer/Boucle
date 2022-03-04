@@ -18,7 +18,7 @@ export default function Aboutas() {
           <h3 className="des_titel">
             How to take care of curly hair in the best way possible
           </h3>
-          <p
+          <h1
             style={{
               "padding-left": "20px",
               "padding-right": "20px",
@@ -35,7 +35,7 @@ export default function Aboutas() {
             Seamlessly sync your online store inventory no matter where you sell
             it. Build your online store. Seamlessly sync your online store
             inventory no matter where you sell it. Build your online store..
-          </p>
+          </h1>
         </div>
       </div>
     </Fragment>
