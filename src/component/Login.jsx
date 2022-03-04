@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
-import { Link, NavLink } from "react-router-dom";
-import { useNavigate, navigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+// import { useNavigate, navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import axios from "axios";
 export default function Login() {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
 
-  {
-    /*axios
-      .post("https://compute-django.herokuapp.com/api/auth/signin", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        let token = response.data.token.access;
-        let data = response.data;
-        localStorage.setItem("token", JSON.stringify(data));
-      })
-      .catch((err) => {
-        console.log(err);
-      });*/
-  }
   const login = (e) => {
     //const navigate = useNavigate()
 

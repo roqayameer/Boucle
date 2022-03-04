@@ -1,9 +1,9 @@
 import React, { useContext, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { DataContext } from "./Datarovider";
-import Colors from "./Colors";
-import DetailsThumt from "./DetailsThumt";
-import { Link } from "react-router-dom";
+// import Colors from "./Colors";
+// import DetailsThumt from "./DetailsThumt";
+// import { Link } from "react-router-dom";
 
 export default function Details() {
   const { id } = useParams();

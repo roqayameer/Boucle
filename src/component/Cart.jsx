@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "./Datarovider";
-import Colors from "./Colors";
+// import Colors from "./Colors";
 import { Link } from "react-router-dom";
 import axios from "axios";
 // import Sizes from './Sizes'
@@ -14,7 +14,7 @@ export default function Cart() {
   const [cart, setCart] = useState(0);
   const [carts] = value.carts;
   // const [, setCarts] = useState(value.carts);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   const [menu, setMenu] = useState(false);
   const fetchData = value.fetchData;
 
@@ -35,10 +35,10 @@ export default function Cart() {
     // fetchProducts();
   }, []);
 
-  const fetchProducts = () => {
-    let loggedstate = JSON.parse(localStorage.getItem("token"));
-    console.log("is Logged", loggedstate);
-  };
+  // const fetchProducts = () => {
+  //   let loggedstate = JSON.parse(localStorage.getItem("token"));
+  //   console.log("is Logged", loggedstate);
+  // };
 
   const reduction = (id) => {
     cart.forEach((item) => {
@@ -49,7 +49,6 @@ export default function Cart() {
     setCart([...cart]);
   };
   const increase = (id) => {
-
     cart.forEach((item) => {
       if (item.id === id) {
         item.count += 1;
@@ -62,9 +61,9 @@ export default function Cart() {
     setMenu(!menu);
   };
 
-  const styleMenu = {
-    left: menu ? 0 : "-100%",
-  };
+  // const styleMenu = {
+  //   left: menu ? 0 : "-100%",
+  // };
   let loggedstate = JSON.parse(localStorage.getItem("token"));
   const removeProduct = (id) => {
     var config = {
@@ -106,35 +105,27 @@ export default function Cart() {
     <>
       {!!carts ? (
         !carts?.length > 0 ? (
-          <p>empty</p>
+          // <p>empty</p>
+          <Cartempty/>
         ) : (
           carts.map((products) => (
             <div className="details cart" key={products.id}>
-              <div
-                className="img-container"
-
-                // style={{
-                //   backgroundImage: `url(${
-                //     products.product.images.length > 0
-                //       ? `https://compute-django.herokuapp.com${products.product.images[0].image}`
-                //       : "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg"
-                //   })`,
-                // }}
-              />
-              <img
-                // src={products_image[`img${key + 1}`]}
-                src={
-                  products.product.images.length > 0
-                    ? `https://compute-django.herokuapp.com${products.product.images[0].image}`
-                    : "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg"
-                }
-                style={{
-                  marginTop: "10%",
-                  width: "100%",
-                  display: "block",
-                  objectFit: "cover",
-                }}
-              />
+              <div className="img-container">
+                <img
+                  // src={products_image[`img${key + 1}`]}
+                  src={
+                    products.product.images.length > 0
+                      ? `https://compute-django.herokuapp.com${products.product.images[0].image}`
+                      : "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg"
+                  }
+                  style={{
+                    marginTop: "10%",
+                    width: "100%",
+                    display: "block",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
 
               <div className="box-details">
                 <h2 title={products.product.name}>{products.product.name}</h2>

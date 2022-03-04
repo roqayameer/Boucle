@@ -50,7 +50,7 @@ export default function () {
           </Link>
         </li>
         <li>
-          <Link to="/Prodect">
+          <Link to="/Login">
             {" "}
             <AiOutlineShoppingCart />
             Shop

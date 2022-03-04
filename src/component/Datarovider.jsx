@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+
 export const DataContext = createContext();
 
 export const Datarovider = (props) => {
@@ -39,7 +40,6 @@ export const Datarovider = (props) => {
       .catch(function (error) {
         console.log(error.response);
       });
-
       fetchData()
   }, []);
 
@@ -86,7 +86,7 @@ export const Datarovider = (props) => {
       .then(function (response) {
         console.log("Hiiiiiiiiiiiii", JSON.stringify(response.data));
         fetchData();
-        alert("the prodect has been added to cart");
+        alert("It was completed");
 
         /*const check = cart.every((item) => {
           return item.id !== id;

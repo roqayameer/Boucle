@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import womane from "./womane.jpg";
-import image_4 from "./image_4.jpg";
+// import image_4 from "./image_4.jpg";
 import image_5 from "./image_5.jpg";
-import Prodect from "./Prodect";
+// import Prodect from "./Prodect";
 import Aboutas from "./Aboutas";
 export default function Homepage() {
   return (
@@ -18,7 +18,7 @@ export default function Homepage() {
             For curly hair, a complete care kit is available.
           </p>
           <div className="Shopnow">
-            <Link to="/Prodect">
+            <Link to="/Login">
               <span
                 style={{
                   position: "relative",
@@ -27,10 +27,10 @@ export default function Homepage() {
                   border: "#f18d2b 2px solid",
                   padding: "3px",
                   "border-radius": "3px",
-                  top: "10px",
+                 
                 }}
               >
-                Shop now
+               Login
               </span>
             </Link>
           </div>
@@ -64,7 +64,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
 
-            <button> <Link to="/Prodect"> Shop </Link></button>
+            <button> <Link to="/Login"> Shop </Link></button>
           </div>
         </div>
         <div className="card">
@@ -88,7 +88,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
 
-            <button> <Link to="/Prodect"> Shop </Link></button>
+            <button> <Link to="/Login"> Shop </Link></button>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export default function Homepage() {
               ideas,JavaScript libraries, Node.
             </p>
             
-            <button> <Link to="/Prodect"> Shop </Link></button>
+            <button> <Link to="/Login"> Shop </Link></button>
           </div>
         </div>
       </div>

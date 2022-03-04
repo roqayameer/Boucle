@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import pexels from "./pexels.jpg";
+// import pexels from "./pexels.jpg";
 import waist from "./waist.jpg";
 export default function Aboutas() {
   return (

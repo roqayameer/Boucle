@@ -82,7 +82,7 @@ section > div > div {
   overflow: hidden;
   /* height: 450px; */
   box-shadow: 0 0 5px #ccc;
-  padding: 15px;
+  padding: 7px;
   margin: 15px 0;
   cursor: pointer;
   display: flex;
@@ -91,7 +91,7 @@ section > div > div {
 }
 
 div > .box {
-  margin: 15px 0;
+  /* margin: 15px 0; */
   height: 217px;
 }
 div > .box h3 {
@@ -146,7 +146,7 @@ div > div.details {
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 186px;
+  /* height: 186px; */
   box-shadow: none;
 }
 

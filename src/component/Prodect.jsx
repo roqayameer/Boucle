@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { DataContext } from "./Datarovider";
-import pexels from "./pexels.jpg";
+// import pexels from "./pexels.jpg";
 import { Link } from "react-router-dom";
-import { BiSearchAlt } from "react-icons/bi";
+// import { BiSearchAlt } from "react-icons/bi";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
-import { Navigate } from "react-router-dom";
+// import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
+// import { Navigate } from "react-router-dom";
 export default function Prodect() {
   const value = useContext(DataContext);
   const [products] = value.products;
@@ -74,7 +74,6 @@ export default function Prodect() {
                     : "https://106kqa307e6v2oixfq35mqbj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/ingredients-1024x1024.jpg"
                 }
                 style={{
-                  marginTop: "10%",
                   width: "100%",
                   display: "block",
                   objectFit: "cover",

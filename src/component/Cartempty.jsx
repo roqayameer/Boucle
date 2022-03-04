@@ -1,5 +1,6 @@
 import React from "react";
 import { BsCartX } from "react-icons/bs";
+import { Link } from "react-router-dom";
 export default function Cartempty() {
   return (
     <div
@@ -25,7 +26,10 @@ export default function Cartempty() {
         }}
       >
         {" "}
+        <Link to="/Prodect">
         Go to shop
+        </Link>
+       
       </p>
     </div>
   );
